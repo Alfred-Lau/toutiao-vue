@@ -1,15 +1,37 @@
 <template>
   <div class="home">
-    我是主页
+    <Header></Header>
+    <Slider></Slider>
+    <News :data='news'></News>
   </div>
 </template>
 
 <script>
+
+import Header from '@/components/header.vue'
+import Slider from '@/components/slider.vue'
+import News from '@/components/news.vue'
+
+import {getNews} from '@/api/news'
+
 export default {
   name: 'Home',
+  components: {
+    Header,
+    Slider,
+    News
+  },
+  async mounted () {
+    const res = await getNews()
+    console.log('dat4', res)
+
+    this.news = res.news
+  },
   data () {
+    console.log('data3', this.news)
+
     return {
-      msg: 'Welcome to Your Vue.js App'
+      news: []
     }
   }
 }
