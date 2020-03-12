@@ -6,6 +6,8 @@ import router from './router'
 import store from '@/store/store.js'
 import '@/common.css'
 
+import '@/mock'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

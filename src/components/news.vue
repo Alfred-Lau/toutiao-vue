@@ -1,6 +1,6 @@
 <template>
-  <section class="news">
-    <div v-for="item in items" :key="item.id">
+  <section class="news" >
+    <div v-for="item in items" :key="item.id" >
       <NewsItem :data='item'></NewsItem>
     </div>
   </section>
@@ -15,18 +15,16 @@ export default {
     NewsItem
   },
   props: {
-    news: {
+    list: {
       type: Array,
       default () {
         return []
       }
     }
   },
-  data () {
-    console.log('data2', this.news)
-
-    return {
-      items: this.news
+  computed: {
+    items (val) {
+      return this.list
     }
   }
 }

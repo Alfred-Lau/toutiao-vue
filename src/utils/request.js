@@ -1,3 +1,3 @@
 import Axios from 'axios'
 
-export default new Axios({})
+export default Axios

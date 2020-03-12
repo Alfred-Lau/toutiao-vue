@@ -23,5 +23,12 @@ export default {
 </script>
 
 <style>
+.news-item {
+  background: cornsilk;
+  color: red;
+
+  padding: 5px;
+  margin-bottom: 3px;
+}
 
 </style>

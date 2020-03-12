@@ -2,7 +2,7 @@
   <div class="home">
     <Header></Header>
     <Slider></Slider>
-    <News :data='news'></News>
+    <News :list='list' ></News>
   </div>
 </template>
 
@@ -12,7 +12,9 @@ import Header from '@/components/header.vue'
 import Slider from '@/components/slider.vue'
 import News from '@/components/news.vue'
 
-import {getNews} from '@/api/news'
+// import { getNews } from '@/api/news'
+
+import axios from 'axios'
 
 export default {
   name: 'Home',
@@ -21,17 +23,20 @@ export default {
     Slider,
     News
   },
-  async mounted () {
-    const res = await getNews()
-    console.log('dat4', res)
-
-    this.news = res.news
+  mounted () {
+    this.fetchList()
   },
   data () {
-    console.log('data3', this.news)
-
     return {
-      news: []
+      list: []
+    }
+  },
+  methods: {
+    fetchList () {
+      console.log('dsssss')
+      axios({method: 'get', url: '/api/news'}).then((res) => {
+        this.list = res.data.news
+      })
     }
   }
 }
